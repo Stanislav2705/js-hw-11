@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { refs } from '../index';
+import { refs } from './refs';
 import { currentPage } from '../index';
 
 const BASE_URL = 'https://pixabay.com/api';
@@ -11,7 +11,10 @@ export async function fetchPhoto() {
     const response = await axios.get(
       `${BASE_URL}/?key=${KEY}&q=${refs.input.value}&image_type=photo&orientation=horizontal&safesearch=true&per_page=${PAGE_SIZE}&page=${currentPage}`
     );
+    return response.data;
   } catch (error) {
     console.log(error);
   }
 }
+
+console.log(fetchPhoto());
