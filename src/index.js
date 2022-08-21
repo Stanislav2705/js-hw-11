@@ -24,9 +24,11 @@ function handleSearchPhoto(e) {
         );
         return;
       }
+      refs.loadMoreBtn.classList.remove('hide');
       currentPage += 1;
 
       if (currentPage > Math.ceil(data.totalHits / PAGE_SIZE)) {
+        refs.loadMoreBtn.classList.add('hide');
         Notify.failure(
           "We're sorry, but you've reached the end of search results."
         );
